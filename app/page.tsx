@@ -1,103 +1,122 @@
 import Image from "next/image";
+import Link from 'next/link';
+
+interface ChatItem {
+  id: string;
+  name: string;
+  message: string;
+  avatar: string;
+  unreadCount?: number;
+}
+
+const chatList: ChatItem[] = [
+  {
+    id: '1',
+    name: 'Haley James',
+    message: 'Stand up for what you believe in',
+    avatar: '/images/avatar1.jpg',
+    unreadCount: 9
+  },
+  {
+    id: '2', 
+    name: 'Nathan Scott',
+    message: 'One day you\'re seventeen and planning for someday. And then quietly and without...',
+    avatar: '/images/avatar2.jpg'
+  },
+  {
+    id: '3',
+    name: 'Brooke Davis',
+    message: 'I am who I am. No excuses.',
+    avatar: '/images/avatar3.jpg',
+    unreadCount: 2
+  },
+  {
+    id: '4',
+    name: 'Jamie Scott',
+    message: 'Some people are a little different. I think that\'s cool.',
+    avatar: '/images/avatar4.jpg'
+  },
+  {
+    id: '5',
+    name: 'Marvin McFadden',
+    message: 'Last night in the NBA the Charlotte Bobcats quietly made a move that most sports fans...',
+    avatar: '/images/avatar5.jpg'
+  }
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="flex min-h-screen flex-col bg-white">
+      {/* Status Bar */}
+      <div className="h-10 bg-white/80 backdrop-blur-xl flex items-center justify-between px-4">
+        <span className="text-[15px] font-semibold">9:41</span>
+        <div className="flex items-center gap-2">
+          <span className="text-sm">􀙇</span>
+          <span className="text-lg">􀛨</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </div>
+
+      {/* Nav Bar */}
+      <div className="h-12 flex items-center justify-between px-4 bg-white">
+        <span className="text-[#006FFD] text-sm font-semibold">Edit</span>
+        <h1 className="text-[14px] font-bold">Chats</h1>
+        <button className="w-6 h-6">
+          <Image src="/images/edit-icon.svg" alt="Edit" width={24} height={24} />
+        </button>
+      </div>
+
+      {/* Search Bar */}
+      <div className="px-4 py-3">
+        <div className="bg-[#F8F9FE] rounded-3xl flex items-center px-4 py-3 gap-2">
+          <Image src="/images/search-icon.svg" alt="Search" width={20} height={20} className="opacity-40" />
+          <input 
+            type="text" 
+            placeholder="Search" 
+            className="bg-transparent w-full text-sm outline-none placeholder:text-gray-400"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </div>
+
+      {/* Chat List */}
+      <div className="flex-1 px-2">
+        {chatList.map((chat) => (
+          <Link href={`/chat/${chat.id}`} key={chat.id}>
+            <div className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-2xl">
+              <div className="w-12 h-12 rounded-2xl bg-[#EAF2FF] flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <h3 className="font-bold text-sm text-[#1F2024]">{chat.name}</h3>
+                <p className="text-xs text-[#71727A] truncate">{chat.message}</p>
+              </div>
+              {chat.unreadCount && (
+                <div className="w-6 h-6 rounded-full bg-[#006FFD] flex items-center justify-center">
+                  <span className="text-[10px] font-semibold text-white">{chat.unreadCount}</span>
+                </div>
+              )}
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Tab Bar */}
+      <div className="h-[88px] bg-white flex items-start justify-around px-4 pt-4">
+        <button className="flex flex-col items-center gap-2">
+          <Image src="/images/chat-icon.svg" alt="Chats" width={24} height={24} className="text-[#006FFD]" />
+          <span className="text-[10px] font-semibold text-[#1F2024]">Chats</span>
+        </button>
+        <button className="flex flex-col items-center gap-2">
+          <Image src="/images/friends-icon.svg" alt="Friends" width={24} height={24} className="opacity-40" />
+          <span className="text-[10px] text-[#71727A]">Friends</span>
+        </button>
+        <button className="flex flex-col items-center gap-2">
+          <Image src="/images/settings-icon.svg" alt="Settings" width={24} height={24} className="opacity-40" />
+          <span className="text-[10px] text-[#71727A]">Settings</span>
+        </button>
+      </div>
+
+      {/* Home Indicator */}
+      <div className="h-8 flex items-center justify-center">
+        <div className="w-32 h-1 bg-black rounded-full" />
+      </div>
+    </main>
   );
 }
