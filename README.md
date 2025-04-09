@@ -18,6 +18,7 @@ Figma 디자인을 코드로 변환하는 MCP(Model-Controller-Presenter) 아키
     - [AccessToken 생성](#accesstoken-생성)
   - [Cursor MCP 설정](#cursor-mcp-설정)
   - [사용 방법](#사용-방법)
+    - [예시 디자인](#예시-디자인)
     - [예시 명령어](#예시-명령어)
 
 ## 소개
@@ -83,7 +84,7 @@ npm install
 
 2. 토큰 설정
    - 토큰 이름 설정
-   - `[File content]` 권한을 [Read-only]로 설정
+   - `[File content]` 권한을 `[Read-only]`로 설정
    - `[Generate token]` 클릭
 
    <img src="./public/preview/figma-key-02.png" alt="Figma 키 생성 단계 2" />
@@ -125,6 +126,8 @@ npm install
 4. Mode는 `Agent`, Model은 `Auto`로 설정
 5. 원하는 변환 작업 요청
 
+### 예시 디자인
+
 <img src="./public/preview/example-01.png" alt="레이어 선택 예시" />
 
 ### 예시 명령어
@@ -137,7 +140,7 @@ npm install
 
 **Q1. 결과물**
 
-<img src="./public/preview/preview-01.png" alt="레이어 선택 예시" />
+<img src="./public/preview/preview-01.png" alt="결과물 01" />
 
 
 **Q2.**
@@ -147,4 +150,4 @@ npm install
 
 **Q2. 결과물**
 
-<img src="./public/preview/preview-02.png" alt="레이어 선택 예시" />
+<img src="./public/preview/preview-02.png" alt="결과물 02" />
